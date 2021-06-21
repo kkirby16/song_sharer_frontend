@@ -11,21 +11,25 @@ function getSongs() {
     .then((response) => response.json()) //fetch returns a promise and in that promise there is a response that we can take out and then parse to json.
     .then((songs) => {
       songs.data.forEach((song) => {
-        const songMarkup = `
-          <div data-id=${song.id}>
-            <h2>${song.attributes.name}</h2>
-            <h3>${song.attributes.artist}</h3>
-            <h3>${song.attributes.album}</h3>
-            <h4>${song.attributes.song_url}</h4>
-            <p>${song.attributes.submitted_by}</p>
-
-            <button data-id=${song.id}>Edit</button>
-          </div>
-          <br><br>
-        `;
-        document.querySelector("#song-container").innerHTML += songMarkup;
+        render(song);
       });
     }); // then here we can get access to that json data.
+}
+
+function render(song) {
+  const songMarkup = `
+            <div data-id=${song.id}>
+              <h2>${song.attributes.name}</h2>
+              <h3>${song.attributes.artist}</h3>
+              <h3>${song.attributes.album}</h3>
+              <h4>${song.attributes.song_url}</h4>
+              <p>${song.attributes.submitted_by}</p>
+  
+              <button data-id=${song.id}>Edit</button>
+            </div>
+            <br><br>
+          `;
+  document.querySelector("#song-container").innerHTML += songMarkup;
 }
 
 function createFormHandler(e) {
@@ -64,18 +68,7 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
   })
     .then((response) => response.json())
     .then((song) => {
-      const songData = song.data.attributes;
-      const songMarkup = `
-      <div data-id=${song.id}>
-      <h2>${songData.name}</h2>
-      <h3>${songData.artist}</h3>
-      <h3>${songData.album}</h3>
-      <h4>${songData.song_url}</h4>
-      <h4>${songData.submitted_by}</h4>
-      <button data-id=${songData.id}>Edit</button>
-      </div>
-      <br><br>`;
-
-      document.querySelector("#song-container").innerHTML += songMarkup;
+      const songData = song.data;
+      render(songData);
     });
 }
