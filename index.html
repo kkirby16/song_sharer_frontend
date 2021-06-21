@@ -7,6 +7,52 @@
     <title>Song Sharer</title>
 </head>
 <body>
+<!---name, artist, album, song_url, submitted_by -->
+    <div id="form-container">
+        <form id="create-song-form">
+        <h3>Create a Song</h3>
+        
+        <input id='input-name' type="text" name="name" value="" placeholder="Song name" class="input-text">
+        <br><br>
+        <input id='input-artist' type="text" name="artist" value="" placeholder="Song artist" class="input-text">
+        <br><br>
+        <input id='input-album' type="text" name="album" value="" placeholder="Song album" class="input-text">
+        <br><br>
+        <input id='input-song-url' type="text" name="song-url" value="" placeholder="Song url" class="input-text">
+        <br><br>
+        <input id='input-submitted-by' type="text" name="submitted-by" value="" placeholder="Your name" class="input-text">
+        <br><br> 
+
+        <!-- ["Folk", "Rock", "Jazz", "House", "Pop", "Indie Rock", "Rap", "Future Bass", "Instrumental", "Alternative", "Trap", "Funk", "Dance", "Hip Hop", "Bluegrass", "Country", "Reggae", "Blues", "Classical", "Punk Rock"]-->
+        <label>Genre: </label><select id="genres" name="genres">
+            <option value="None">-Select-</option>
+            <option value="1">Folk</option>
+            <option value="2">Rock</option>
+            <option value="3">Jazz</option>
+            <option value="4">House</option>
+            <option value="5">Pop</option>
+            <option value="6">Indie Rock</option>
+            <option value="7">Rap</option>
+            <option value="8">Future Bass</option>
+            <option value="9">Instrumental</option>
+            <option value="10">Alternative</option>
+            <option value="11">Trap</option>
+            <option value="12">Funk</option>
+            <option value="13">Dance</option>
+            <option value="14">Hip Hop</option>
+            <option value="15">Bluegrass</option>
+            <option value="16">Country</option>
+            <option value="17">Reggae</option>
+            <option value="18">Blues</option>
+            <option value="19">Classical</option>
+            <option value="20">Punk Rock</option>
+        </select>
+        <br><br>
+
+        <input id="create-button" type="submit" name="submit" value="Create New Song" class="submit">
+        </form>
+    </div>
+    <br><br>
     <div id="song-container"> <!-- the div we are going to mount to to display whatever content we want to the user.-->
     </div>
     <script type="text/javascript" src="src/index.js"></script> <!-- this is the tag we need to add in our index.html file in order to connect our eventual javascript file with this html file-->
