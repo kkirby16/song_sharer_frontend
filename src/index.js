@@ -17,6 +17,8 @@ function getSongs() {
 }
 
 function getGenres() {
+  genresContainer.innerHTML = "";
+
   fetch("http://localhost:3000/api/v1/genres")
     .then((response) => response.json()) //fetch returns a promise and in that promise there is a response that we can take out and then parse to json.
     .then((genres) => {
@@ -96,4 +98,23 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
 let genresContainer = document.querySelector("#genre-container");
 let genresButton = document.querySelector("#see-genres-button");
 
-genresButton.addEventListener("click", () => {});
+genresButton.addEventListener("click", () => {
+  showGenres = !showGenres;
+  if (showGenres === true) {
+    genresContainer.style.display = "inline-block";
+    getGenres();
+  } else {
+    genresContainer.style.display = "none";
+  }
+
+  genresButton.innerText = buttonStates[genresButton.innerText];
+});
+
+let showGenres = false;
+
+let buttonStates = {
+  "See all genres and their descriptions":
+    "Hide the genres and their descriptions",
+  "Hide the genres and their descriptions":
+    "See all genres and their descriptions",
+};
