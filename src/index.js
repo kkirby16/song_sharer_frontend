@@ -92,3 +92,8 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
       render(songData);
     });
 }
+
+let genresContainer = document.querySelector("#genre-container");
+let genresButton = document.querySelector("#see-genres-button");
+
+genresButton.addEventListener("click", () => {});
