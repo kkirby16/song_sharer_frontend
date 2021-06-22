@@ -1,1 +1,1 @@
-console.log("in song js");
+class Song {}
