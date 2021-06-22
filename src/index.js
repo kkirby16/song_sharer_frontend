@@ -16,6 +16,18 @@ function getSongs() {
     }); // then here we can get access to that json data.
 }
 
+function getGenres() {
+  genresContainer.innerHTML = "";
+
+  fetch("http://localhost:3000/api/v1/genres")
+    .then((response) => response.json()) //fetch returns a promise and in that promise there is a response that we can take out and then parse to json.
+    .then((genres) => {
+      genres.data.forEach((genre) => {
+        renderGenre(genre);
+      });
+    }); // then here we can get access to that json data.
+}
+
 function render(song) {
   const songMarkup = `
             <div data-id=${song.id}>
@@ -30,6 +42,16 @@ function render(song) {
             <br><br>
           `;
   document.querySelector("#song-container").innerHTML += songMarkup;
+}
+
+function renderGenre(genre) {
+  const genreMarkup = `
+    <div data-id=${genre.id}>
+      <h4>Genre Name: ${genre.attributes.name}</h4>
+      <h5>Genre Description: ${genre.attributes.description}</h5>
+    </div>
+  `;
+  document.querySelector("#genre-container").innerHTML += genreMarkup;
 }
 
 function createFormHandler(e) {
@@ -72,3 +94,27 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
       render(songData);
     });
 }
+
+let genresContainer = document.querySelector("#genre-container");
+let genresButton = document.querySelector("#see-genres-button");
+
+genresButton.addEventListener("click", () => {
+  showGenres = !showGenres;
+  if (showGenres === true) {
+    genresContainer.style.display = "inline-block";
+    getGenres();
+  } else {
+    genresContainer.style.display = "none";
+  }
+
+  genresButton.innerText = buttonStates[genresButton.innerText];
+});
+
+let showGenres = false;
+
+let buttonStates = {
+  "See all genres and their descriptions":
+    "Hide the genres and their descriptions",
+  "Hide the genres and their descriptions":
+    "See all genres and their descriptions",
+};
