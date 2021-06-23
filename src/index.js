@@ -11,6 +11,9 @@ function getSongs() {
     .then((response) => response.json()) //fetch returns a promise and in that promise there is a response that we can take out and then parse to json.
     .then((songs) => {
       songs.data.forEach((song) => {
+        //debugger;
+        let newSong = new Song(song, song.attributes); //here we can and should pass our constructor 2 arguments: one, just the song or just the song data, and two, the attributes of that song
+        //creating new instances of song class here.
         render(song);
       });
     }); // then here we can get access to that json data.
@@ -31,11 +34,11 @@ function getGenres() {
 function render(song) {
   const songMarkup = `
             <div data-id=${song.id}>
-              <h2>${song.attributes.name}</h2>
-              <h3>${song.attributes.artist}</h3>
-              <h3>${song.attributes.album}</h3>
-              <h4>${song.attributes.song_url}</h4>
-              <p>${song.attributes.submitted_by}</p>
+              <h2>Name: ${song.attributes.name}</h2>
+              <h3>Artist: ${song.attributes.artist}</h3>
+              <h3>Album: ${song.attributes.album}</h3>
+              <h4>Song Url: ${song.attributes.song_url}</h4>
+              <p>Submitted By: ${song.attributes.submitted_by}</p>
   
               <button data-id=${song.id}>Edit</button>
             </div>
@@ -87,6 +90,7 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
     //here we are creating this object that we will send to our database based on attributes our api wants to create a new song
     //this will send back the data to my api.
     //we are also stringifying this json data in order to send it.
+    //the keys in our body data have to be exactly what they are like in the database.
   })
     .then((response) => response.json())
     .then((song) => {
