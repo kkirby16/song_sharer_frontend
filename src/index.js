@@ -14,7 +14,8 @@ function getSongs() {
         //debugger;
         let newSong = new Song(song, song.attributes); //here we can and should pass our constructor 2 arguments: one, just the song or just the song data, and two, the attributes of that song
         //creating new instances of song class here.
-        render(song);
+        document.querySelector("#song-container").innerHTML +=
+          newSong.renderSongCard();
       });
     }); // then here we can get access to that json data.
 }
@@ -29,22 +30,6 @@ function getGenres() {
         renderGenre(genre);
       });
     }); // then here we can get access to that json data.
-}
-
-function render(song) {
-  const songMarkup = `
-            <div data-id=${song.id}>
-              <h2>Name: ${song.attributes.name}</h2>
-              <h3>Artist: ${song.attributes.artist}</h3>
-              <h3>Album: ${song.attributes.album}</h3>
-              <h4>Song Url: ${song.attributes.song_url}</h4>
-              <p>Submitted By: ${song.attributes.submitted_by}</p>
-  
-              <button data-id=${song.id}>Edit</button>
-            </div>
-            <br><br>
-          `;
-  document.querySelector("#song-container").innerHTML += songMarkup;
 }
 
 function renderGenre(genre) {
