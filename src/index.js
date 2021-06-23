@@ -80,7 +80,11 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
     .then((response) => response.json())
     .then((song) => {
       const songData = song.data;
-      render(songData);
+
+      let newSong = new Song(songData, songData.attributes);
+
+      document.querySelector("#song-container").innerHTML +=
+        newSong.renderSongCard();
     });
 }
 
