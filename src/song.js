@@ -6,10 +6,25 @@ class Song {
     this.album = songAttributes.album;
     this.song_url = songAttributes.song_url;
     this.submitted_by = songAttributes.submitted_by;
-    this.genre = songAttributes.genre;
+    this.genre = songAttributes.genre; //in our constructor, we're also giving the songs the nested genre object
     Song.all.push(this); //with each new instance, I'll be pushing this which represents the current instance that was created into Song.all
-    debugger;
     //Song.all is a good name that develpers have decided to use when talking about an array of something.
+  }
+
+  renderSongCard() {
+    //don't need the function keyword declaration for our classes.
+    return `
+              <div data-id=${this.id}>
+                <h2>Name: ${this.name}</h2>
+                <h3>Artist: ${this.artist}</h3>
+                <h3>Album: ${this.album}</h3>
+                <h4>Song Url: ${this.song_url}</h4>
+                <p>Submitted By: ${this.submitted_by}</p>
+                <p>Genre: ${this.genre.name} </p>
+                <button data-id=${this.id}>Edit</button>
+              </div>
+              <br><br>
+            `;
   }
 }
 
