@@ -27,19 +27,11 @@ function getGenres() {
     .then((response) => response.json()) //fetch returns a promise and in that promise there is a response that we can take out and then parse to json.
     .then((genres) => {
       genres.data.forEach((genre) => {
-        renderGenre(genre);
+        let newGenre = new Genre(genre, genre.attributes);
+        document.querySelector("#genre-container").innerHTML +=
+          newGenre.renderGenre();
       });
     }); // then here we can get access to that json data.
-}
-
-function renderGenre(genre) {
-  const genreMarkup = `
-    <div data-id=${genre.id}>
-      <h4>Genre Name: ${genre.attributes.name}</h4>
-      <h5>Genre Description: ${genre.attributes.description}</h5>
-    </div>
-  `;
-  document.querySelector("#genre-container").innerHTML += genreMarkup;
 }
 
 function createFormHandler(e) {
