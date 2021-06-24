@@ -15,9 +15,9 @@ class Song {
     //don't need the function keyword declaration for our classes.
     return `
               <div data-id=${this.id}>
-                <h2>Name: ${this.name}</h2>
-                <h4>Artist: ${this.artist}</h3>
-                <h4>Album: ${this.album}</h3>
+                <h3>Name: ${this.name}</h3>
+                <h4>Artist: ${this.artist}</h4>
+                <h4>Album: ${this.album}</h4>
                 <h4>Song Url: ${this.song_url}</h4>
                 <h4>Genre: ${this.genre.name} </h4>
                 <h4>Submitted By: ${this.submitted_by}</h4>
