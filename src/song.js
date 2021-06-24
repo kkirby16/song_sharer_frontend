@@ -16,14 +16,13 @@ class Song {
     return `
               <div data-id=${this.id}>
                 <h2>Name: ${this.name}</h2>
-                <h3>Artist: ${this.artist}</h3>
-                <h3>Album: ${this.album}</h3>
+                <h4>Artist: ${this.artist}</h3>
+                <h4>Album: ${this.album}</h3>
                 <h4>Song Url: ${this.song_url}</h4>
-                <p>Submitted By: ${this.submitted_by}</p>
-                <p>Genre: ${this.genre.name} </p>
-                <button data-id=${this.id}>Edit</button>
+                <h4>Genre: ${this.genre.name} </h4>
+                <h4>Submitted By: ${this.submitted_by}</h4>
               </div>
-              <br><br>
+              <br>
             `;
   }
 }
