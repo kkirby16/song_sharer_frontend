@@ -1,3 +1,22 @@
+#container {
+  overflow: hidden;
+}
+
+#form-container {
+  width: 25%;
+}
+
 #genre-container {
-  display: none;
+  /* background-color: #8fbc8f; */
+}
+
+#song-container {
+  vertical-align: top;
+  text-align: center;
+  overflow: scroll;
+  position: relative;
+  margin-left: 580px;
+  top: -400px;
+  width: 40%;
+  /* background-color: #8fbc8f; */
 }
