@@ -94,7 +94,8 @@ let genresButton = document.querySelector("#see-genres-button");
 genresButton.addEventListener("click", () => {
   showGenres = !showGenres;
   if (showGenres === true) {
-    genresContainer.style.display = "inline-block";
+    genresContainer.style =
+      "display:inline-block; float:left; overflow:scroll; width: 36%; height: 300px;";
     getGenres();
   } else {
     genresContainer.style.display = "none";
