@@ -14,7 +14,8 @@ function getSongs() {
         //debugger;
         let newSong = new Song(song, song.attributes); //here we can and should pass our constructor 2 arguments: one, just the song or just the song data, and two, the attributes of that song
         //creating new instances of song class here.
-        render(song);
+        document.querySelector("#song-container").innerHTML +=
+          newSong.renderSongCard();
       });
     }); // then here we can get access to that json data.
 }
@@ -26,35 +27,11 @@ function getGenres() {
     .then((response) => response.json()) //fetch returns a promise and in that promise there is a response that we can take out and then parse to json.
     .then((genres) => {
       genres.data.forEach((genre) => {
-        renderGenre(genre);
+        let newGenre = new Genre(genre, genre.attributes);
+        document.querySelector("#genre-container").innerHTML +=
+          newGenre.renderGenre();
       });
     }); // then here we can get access to that json data.
-}
-
-function render(song) {
-  const songMarkup = `
-            <div data-id=${song.id}>
-              <h2>Name: ${song.attributes.name}</h2>
-              <h3>Artist: ${song.attributes.artist}</h3>
-              <h3>Album: ${song.attributes.album}</h3>
-              <h4>Song Url: ${song.attributes.song_url}</h4>
-              <p>Submitted By: ${song.attributes.submitted_by}</p>
-  
-              <button data-id=${song.id}>Edit</button>
-            </div>
-            <br><br>
-          `;
-  document.querySelector("#song-container").innerHTML += songMarkup;
-}
-
-function renderGenre(genre) {
-  const genreMarkup = `
-    <div data-id=${genre.id}>
-      <h4>Genre Name: ${genre.attributes.name}</h4>
-      <h5>Genre Description: ${genre.attributes.description}</h5>
-    </div>
-  `;
-  document.querySelector("#genre-container").innerHTML += genreMarkup;
 }
 
 function createFormHandler(e) {
@@ -95,7 +72,11 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
     .then((response) => response.json())
     .then((song) => {
       const songData = song.data;
-      render(songData);
+
+      let newSong = new Song(songData, songData.attributes);
+
+      document.querySelector("#song-container").innerHTML +=
+        newSong.renderSongCard();
     });
 }
 
@@ -105,7 +86,8 @@ let genresButton = document.querySelector("#see-genres-button");
 genresButton.addEventListener("click", () => {
   showGenres = !showGenres;
   if (showGenres === true) {
-    genresContainer.style.display = "inline-block";
+    genresContainer.style =
+      "display:inline-block; float:left; overflow:scroll; width: 36%; height: 300px;";
     getGenres();
   } else {
     genresContainer.style.display = "none";
