@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css">    
     <title>Song Sharer</title>
 </head>
-<body>
+<body id="container">
 <!---name, artist, album, song_url, submitted_by -->
     <div id="form-container">
         <form id="create-song-form">
@@ -55,10 +56,11 @@
     <br><br>
     <button type="button" id="see-genres-button">See all genres and their descriptions</button>
     <br><br>
-    <div id="genre-container" style="text-align:left; overflow:scroll; height: 350px"> 
+    <div id="genre-container"> 
     </div>
     <br><br>
-    <div id="song-container" style="text-align:right"> <!-- the div we are going to mount to to display whatever content we want to the user.-->
+    <div id="song-container" style= "height: 700px; width: 680px"> <!-- the div we are going to mount to to display whatever content we want to the user.-->
+    <h1>Posted songs:</h1><br>
     </div>
     <script type="text/javascript" src="src/song.js"></script>
     <script type="text/javascript" src="src/index.js"></script> <!-- this is the tag we need to add in our index.html file in order to connect our eventual javascript file with this html file-->
