@@ -4,14 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css">    
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;1,900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
+
+
+    
     <title>Song Sharer</title>
 </head>
 <body id="container">
 <!---name, artist, album, song_url, submitted_by -->
     <div id="form-container">
         <form id="create-song-form">
-        <h3>Create a Song</h3>
+        <h3>Post a song</h3>
         
         <input id='input-name' type="text" name="name" value="" placeholder="Song name" class="input-text">
         <br><br>
@@ -50,9 +63,12 @@
         </select>
         <br><br>
 
-        <input id="create-button" type="submit" name="submit" value="Create New Song" class="submit">
+        <input id="create-button" type="submit" name="submit" value="Share song" class="submit">
+
         </form>
     </div>
+    <div id="site-title1">Song</div>
+    <div id="site-title2">Sharer</div>
     <br><br>
     <button type="button" id="see-genres-button">See all genres and their descriptions</button>
     <br><br>
@@ -60,11 +76,19 @@
     </div>
     <br><br>
     <div id="song-container" style= "height: 700px; width: 680px"> <!-- the div we are going to mount to to display whatever content we want to the user.-->
-    <h1>Posted songs:</h1><br>
+    <h1 id="song-container-title">Posted songs:</h1><br>
     </div>
     <script type="text/javascript" src="src/song.js"></script>
     <script type="text/javascript" src="src/genre.js"></script>
     <script type="text/javascript" src="src/index.js"></script> <!-- this is the tag we need to add in our index.html file in order to connect our eventual javascript file with this html file-->
+
+    
+      
+      <a class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules" data-ca3_icon=""></a>
+      
+      
+    </div>
+
 </body>
 </html>
 
