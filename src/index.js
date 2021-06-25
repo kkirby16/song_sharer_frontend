@@ -87,7 +87,7 @@ genresButton.addEventListener("click", () => {
   showGenres = !showGenres;
   if (showGenres === true) {
     genresContainer.style =
-      "display:inline-block; float:left; overflow:scroll; width: 36%; height: 300px;";
+      "display:inline-block; float:left; overflow:scroll; width: 36%; height: 310px; overflow-x: hidden";
     getGenres();
   } else {
     genresContainer.style.display = "none";
