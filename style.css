@@ -9,9 +9,18 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  color: #35b997;
+h6,
+label,
+input {
+  color: white;
   font-family: "Montserrat", sans-serif;
+}
+
+input {
+  font-size: 12px;
+  font-weight: 500;
+  color: black;
+  width: 78%;
 }
 
 h1:hover,
@@ -20,7 +29,7 @@ h3:hover,
 h4:hover,
 h5:hover,
 h6:hover {
-  color: white;
+  color: #35b997;
 }
 
 /* #site-title1:hover,
@@ -46,8 +55,35 @@ h6:hover {
   font-style: italic;
   position: absolute;
   left: 209px;
-  top: 105px;
+  top: 106px;
   font-size: 122px;
+}
+
+#form-container-title {
+  font-size: 24px;
+}
+
+#form-container-title:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 68%;
+  padding-top: 13px;
+  margin-left: 32px;
+  border-bottom: 3px solid #35b997;
+}
+
+#song-container-title:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 20%;
+  padding-top: 13px;
+  border-bottom: 3px solid #35b997;
+}
+
+label {
+  font-size: 15px;
 }
 
 #form-container {
@@ -68,7 +104,7 @@ h6:hover {
   overflow: scroll;
   position: relative;
   margin-left: 660px;
-  top: -380px;
+  top: -425px;
   width: 40%;
   border: solid #35b997 2px;
   overflow-x: hidden;
@@ -156,6 +192,17 @@ html body [data-ca3_iconfont="ETmodules"]::before {
 
 #song-container-title {
   font-size: 36px;
+  animation: color-change 5s infinite;
+  display: inline-block;
+}
+
+#song-container-title:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 20%;
+  padding-top: 13px;
+  border-bottom: 3px solid #35b997;
 }
 
 ::-webkit-scrollbar {
@@ -176,4 +223,99 @@ html body [data-ca3_iconfont="ETmodules"]::before {
 
 ::-webkit-scrollbar-corner {
   background: rgba(0, 0, 0, 0);
+}
+
+.floating1 {
+  animation-name: floating;
+  animation-duration: 4s;
+  animation-delay: 0.4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-left: 0px;
+  margin-top: 5px;
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, 15px);
+  }
+  100% {
+    transform: translate(0, -0px);
+  }
+}
+
+.floating2 {
+  animation-name: floating;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-left: 0px;
+  margin-top: 5px;
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, 15px);
+  }
+  100% {
+    transform: translate(0, -0px);
+  }
+}
+
+@keyframes color-change {
+  0% {
+    color: #35b997;
+  }
+  50% {
+    color: #b3e8db;
+  }
+  100% {
+    color: #35b997;
+  }
+}
+
+#create-button,
+#see-genres-button {
+  background-color: transparent;
+  font-weight: bold;
+  border: 1.5px solid #35b997;
+  color: #35b997;
+  border-radius: 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 17px;
+  margin: 4px 2px;
+  transition-duration: 0.09s;
+  cursor: pointer;
+}
+
+#create-button:hover {
+  background-color: #35b997;
+  color: white;
+  font-weight: bold;
+  transform: skew(0deg, 4deg);
+}
+
+#see-genres-button:hover {
+  background-color: #35b997;
+  color: white;
+  font-weight: bold;
+  transform: skew(0deg, -4deg);
+}
+
+#create-button:focus,
+#see-genres-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#song-name {
+  font-size: 21px;
 }
