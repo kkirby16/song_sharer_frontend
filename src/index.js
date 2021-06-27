@@ -82,6 +82,14 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
 
 let genresContainer = document.querySelector("#genre-container");
 let genresButton = document.querySelector("#see-genres-button");
+let showGenres = false;
+
+let buttonStates = {
+  "See all genres and their descriptions":
+    "Hide the genres and their descriptions",
+  "Hide the genres and their descriptions":
+    "See all genres and their descriptions",
+};
 
 genresButton.addEventListener("click", () => {
   showGenres = !showGenres;
@@ -95,12 +103,3 @@ genresButton.addEventListener("click", () => {
 
   genresButton.innerText = buttonStates[genresButton.innerText];
 });
-
-let showGenres = false;
-
-let buttonStates = {
-  "See all genres and their descriptions":
-    "Hide the genres and their descriptions",
-  "Hide the genres and their descriptions":
-    "See all genres and their descriptions",
-};
