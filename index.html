@@ -15,6 +15,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
 
 
     
@@ -24,8 +28,7 @@
 <!---name, artist, album, song_url, submitted_by -->
     <div id="form-container">
         <form id="create-song-form">
-        <h3>Post a song</h3>
-        
+        <h3 id="form-container-title">Post a song</h3>
         <input id='input-name' type="text" name="name" value="" placeholder="Song name" class="input-text">
         <br><br>
         <input id='input-artist' type="text" name="artist" value="" placeholder="Song artist" class="input-text">
@@ -67,8 +70,8 @@
 
         </form>
     </div>
-    <div id="site-title1">Song</div>
-    <div id="site-title2">Sharer</div>
+    <div id="site-title1" class="floating1">Song</div>
+    <div id="site-title2" class="floating2">Sharer</div>
     <br><br>
     <button type="button" id="see-genres-button">See all genres and their descriptions</button>
     <br><br>
@@ -89,6 +92,7 @@
       
     </div>
 
+   
 </body>
 </html>
 
