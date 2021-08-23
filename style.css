@@ -23,14 +23,13 @@ input {
   width: 78%;
 }
 
-h1:hover,
+/* h1:hover,
 h2:hover,
 h3:hover,
 h4:hover,
 h5:hover,
 h6:hover {
-  color: #35b997;
-}
+} */
 
 /* #site-title1:hover,
 #site-title2:hover {
@@ -318,4 +317,92 @@ html body [data-ca3_iconfont="ETmodules"]::before {
 
 #song-name {
   font-size: 21px;
+}
+
+.floating3 {
+  animation-name: floating;
+  animation-duration: 8s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-left: 0px;
+  margin-top: 5px;
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, 15px);
+  }
+  100% {
+    transform: translate(0, -0px);
+  }
+}
+
+#circle {
+  width: 500px;
+  height: 500px;
+  position: fixed;
+  z-index: -9999;
+  top: 160px;
+  left: 820px;
+  background: #35b997;
+  border-radius: 50%;
+}
+
+#circle2 {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  z-index: -9999;
+  bottom: 100px;
+  right: 670px;
+  background: #35b997;
+  border-radius: 50%;
+}
+
+#circle3 {
+  width: 25px;
+  height: 25px;
+  position: fixed;
+  z-index: -9999;
+  bottom: 135px;
+  right: 620px;
+  background: #35b997;
+  border-radius: 50%;
+}
+
+#circle4 {
+  width: 90px;
+  height: 90px;
+  position: fixed;
+  z-index: -9999;
+  bottom: 180px;
+  right: 600px;
+  background: #35b997;
+  border-radius: 50%;
+}
+
+#circle5 {
+  width: 35px;
+  height: 35px;
+  position: fixed;
+  z-index: -9999;
+  bottom: 280px;
+  right: 638px;
+  background: #35b997;
+  border-radius: 50%;
+}
+
+#circle6 {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  z-index: -9999;
+  bottom: 118px;
+  right: 525px;
+  background: #35b997;
+  border-radius: 50%;
 }
