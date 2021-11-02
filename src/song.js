@@ -7,20 +7,24 @@ class Song {
     this.song_url = songAttributes.song_url;
     this.submitted_by = songAttributes.submitted_by;
     this.genre = songAttributes.genre; //in our constructor, we're also giving the songs the nested genre object
+    this.likes = songAttributes.likes;
     Song.all.push(this); //with each new instance, I'll be pushing this which represents the current instance that was created into Song.all
-    //Song.all is a good name that develpers have decided to use when talking about an array of something.
+    //Song.all is a good name that developers have decided to use when talking about an array of something.
   }
 
   renderSongCard() {
     //don't need the function keyword declaration for our classes.
     return `
-              <div data-id=${this.id}>
-                <h3 id="song-name">Name:  ${this.name} </h3>
-                <h4>Artist:  ${this.artist} </h4>
-                <h4>Album:  ${this.album}</h4>
-                <h4>Song Url:  ${this.song_url}</h4>
-                <h4>Genre:  ${this.genre.name} </h4>
-                <h4>Submitted By:  ${this.submitted_by}</h4>
+              <div data-id=${this.id} class="song-position">
+              <h3 id="song-name">Name:  ${this.name} </h3>
+                <h4 id="song-info">Artist:  ${this.artist} </h4>
+                <h4 id="song-info">Album:  ${this.album}</h4>
+                <h4 id="song-info">Song Url:  ${this.song_url}</h4>
+                <h4 id="song-info">Genre:  ${this.genre.name} </h4>
+                <h4 id="song-info">Submitted By:  ${this.submitted_by}</h4>
+                <h4 id="song-info">Likes: ${this.likes}</h4>
+                <button data-id=${this.id} id="unliked" class="like-button">Like </button>
+                <hr class="song-divider">
               </div>
               <br>
             `;
