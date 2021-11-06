@@ -1,23 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
   getSongs();
-
   const createSongForm = document.getElementById("create-song-form");
 
   createSongForm.addEventListener("submit", (e) => createFormHandler(e)); //when add an event listener, first step should be to console log to confirm that the event was hooked up properly
 }); //after this form is submitted it is calling a form handler.
 
 function getSongs() {
-  fetch("http://localhost:3000/api/v1/songs")
+  return fetch("http://localhost:3000/api/v1/songs")
     .then((response) => response.json()) //fetch returns a promise and in that promise there is a response that we can take out and then parse to json.
     .then((songs) => {
       songs.data.forEach((song) => {
         //debugger;
         let newSong = new Song(song, song.attributes); //here we can and should pass our constructor 2 arguments: one, just the song or just the song data, and two, the attributes of that song
         //creating new instances of song class here.
-        document.querySelector("#song-container").innerHTML +=
-          newSong.renderSongCard();
+        let songsContainer = (document.querySelector(
+          "#song-container"
+        ).innerHTML += newSong.renderSongCard());
       });
-    }); // then here we can get access to that json data.
+
+      // referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+      handleLikes();
+    });
+
+  // then here we can get access to that json data.
 }
 
 function getGenres() {
@@ -75,8 +80,10 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
 
       let newSong = new Song(songData, songData.attributes);
 
-      document.querySelector("#song-container").innerHTML +=
-        newSong.renderSongCard();
+      let songsContainer = document.querySelector("#song-container");
+      let songsContainerTitle = document.querySelector("#song-container-title");
+      songsContainer.innerHTML =
+        newSong.renderSongCard() + songsContainer.innerHTML;
     });
 }
 
@@ -95,7 +102,7 @@ genresButton.addEventListener("click", () => {
   showGenres = !showGenres;
   if (showGenres === true) {
     genresContainer.style =
-      "display:inline-block; float:left; overflow:scroll; width: 36%; height: 310px; overflow-x: hidden";
+      "display:inline-block; float:left; overflow:scroll; width: 36%; height: 21.528vw; overflow-x: hidden";
     getGenres();
   } else {
     genresContainer.style.display = "none";
@@ -103,3 +110,32 @@ genresButton.addEventListener("click", () => {
 
   genresButton.innerText = buttonStates[genresButton.innerText];
 });
+
+function handleLikes() {
+  console.log("in handleLikes");
+  let likeButtons = document.getElementsByClassName("like-button");
+  console.log(likeButtons);
+
+  let likeButtonStates = {
+    "Like ": "Unlike ",
+    "Unlike ": "Like ",
+  };
+
+  [...likeButtons].forEach((likeButton) => {
+    console.log("in the forEach");
+    likeButton.addEventListener("click", () => {
+      if (likeButton.id === "unliked") {
+        likeButton.id = "liked";
+        console.log("true"); //where I'll call an add like function
+      } else {
+        likeButton.id = "unliked";
+        console.log("false"); //where I'll call a remove like function
+      }
+      likeButton.innerHTML = likeButtonStates[likeButton.innerHTML];
+    });
+  });
+}
+
+// for (let i = 0; i < nodeItems.length; i++) {
+//   // access current element with nodeItems[i]
+//
