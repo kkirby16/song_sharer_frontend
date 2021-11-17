@@ -70,7 +70,7 @@ h6:hover {
   width: 68%;
   padding-top: 0.903vw;
   margin-left: 2.222vw;
-  border-bottom: 0.243vw solid #35b997;
+  border-bottom: 0.243vw solid #777395;
 }
 
 #song-container-title:after {
@@ -206,6 +206,7 @@ html body [data-ca3_iconfont="ETmodules"]::before {
   margin-left: 30%;
   animation: color-change 5s infinite;
   z-index: -100;
+  color: #f2ecff !important;
 }
 
 #song-container-title:after {
@@ -214,7 +215,7 @@ html body [data-ca3_iconfont="ETmodules"]::before {
   margin: 0 auto;
   width: 20%;
   padding-top: 0.903vw;
-  border-bottom: 0.243vw solid #35b997;
+  border-bottom: 0.243vw solid #f2ecff;
 }
 
 ::-webkit-scrollbar {
@@ -296,8 +297,8 @@ html body [data-ca3_iconfont="ETmodules"]::before {
 #see-genres-button {
   background-color: transparent;
   font-weight: bold;
-  border: 0.104vw solid #35b997;
-  color: #35b997;
+  border: 0.104vw solid #777395;
+  color: #777395;
   border-radius: 0vw;
   text-align: center;
   text-decoration: none;
@@ -309,14 +310,14 @@ html body [data-ca3_iconfont="ETmodules"]::before {
 }
 
 #create-button:hover {
-  background-color: #35b997;
+  background-color: #777395;
   color: white;
   font-weight: bold;
   transform: skew(0deg, 4deg);
 }
 
 #see-genres-button:hover {
-  background-color: #35b997;
+  background-color: #777395;
   color: white;
   font-weight: bold;
   transform: skew(0deg, -4deg);
@@ -364,7 +365,7 @@ html body [data-ca3_iconfont="ETmodules"]::before {
   z-index: -9999;
   top: 11.111vw;
   left: 56.944vw;
-  background: #35b997;
+  background: #777395;
   border-radius: 50%;
 }
 
@@ -397,7 +398,7 @@ html body [data-ca3_iconfont="ETmodules"]::before {
   z-index: -9999;
   bottom: 12.5vw;
   right: 41.667vw;
-  background: #35b997;
+  background: #777395;
   border-radius: 50%;
 }
 
@@ -419,7 +420,7 @@ html body [data-ca3_iconfont="ETmodules"]::before {
   z-index: -9999;
   bottom: 8.194vw;
   right: 36.458vw;
-  background: #35b997;
+  background: #777395;
   border-radius: 50%;
 }
 
