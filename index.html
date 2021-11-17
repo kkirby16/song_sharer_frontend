@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,14 +17,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-
-
-
-    
     <title>Song Sharer</title>
 </head>
 <body id="container">
-<!---name, artist, album, song_url, submitted_by -->
     <div id="form-container">
         <form id="create-song-form">
         <h3 id="form-container-title">Post a song</h3>
@@ -39,8 +33,6 @@
         <br><br>
         <input id='input-submitted-by' type="text" name="submitted-by" value="" placeholder="Your name" class="input-text">
         <br><br> 
-
-        <!-- ["Folk", "Rock", "Jazz", "House", "Pop", "Indie Rock", "Rap", "Future Bass", "Instrumental", "Alternative", "Trap", "Funk", "Dance", "Hip Hop", "Bluegrass", "Country", "Reggae", "Blues", "Classical", "Punk Rock"]-->
         <label>Genre: </label><select id="genres" name="genres">
             <option value="None">-Select-</option>
             <option value="1">Folk</option>
@@ -65,7 +57,6 @@
             <option value="20">Punk Rock</option>
         </select>
         <br><br>
-
         <input id="create-button" type="submit" name="submit" value="Share song" class="submit">
         </form>
     </div>
@@ -84,27 +75,14 @@
         <div id="circle4" class="floating1"></div>
         <div id="circle5" class="floating3"></div>
         <div id="circle6" class="floating3"></div>
-
-
-
-
-
-
-
-
         <h1 id="song-container-title">Posted songs:</h1><br>
     </div>
     <script type="text/javascript" src="src/song.js"></script>
     <script type="text/javascript" src="src/genre.js"></script>
     <script type="text/javascript" src="src/index.js"></script> <!-- this is the tag we need to add in our index.html file in order to connect our eventual javascript file with this html file-->
-
-    
-      
       <a class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules" data-ca3_icon=""></a>
-      
-      
     </div>   
 </body>
 </html>
 
-<!-- we're going to use javascript to manipulate and update the index.html structure which is manipulating of the dom-->
+<!-- javascript will manipulate and update the index.html structure which is manipulating of the dom-->
