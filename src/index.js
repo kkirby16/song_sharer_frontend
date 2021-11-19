@@ -10,24 +10,18 @@ function getSongs() {
     .then((response) => response.json()) //fetch returns a promise and in that promise there is a response that we can take out and then parse to json.
     .then((songs) => {
       songs.data.forEach((song) => {
-        //debugger;
         let newSong = new Song(song, song.attributes); //here we can and should pass our constructor 2 arguments: one, just the song or just the song data, and two, the attributes of that song
         //creating new instances of song class here.
         let songsContainer = (document.querySelector(
           "#song-container"
         ).innerHTML += newSong.renderSongCard());
       });
-
-      // referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
       handleLikes();
     });
-
-  // then here we can get access to that json data.
 }
 
 function getGenres() {
   genresContainer.innerHTML = "";
-
   fetch("http://localhost:3000/api/v1/genres")
     .then((response) => response.json()) //fetch returns a promise and in that promise there is a response that we can take out and then parse to json.
     .then((genres) => {
@@ -48,18 +42,14 @@ function createFormHandler(e) {
   const submittedByInput = document.querySelector("#input-submitted-by").value;
   const genreId = parseInt(document.querySelector("#genres").value);
   postFetch(
-    nameInput,
+    nameInput, //we should get the values of our form inputs before we make the post request
     artistInput,
     albumInput,
     songUrlInput,
     submittedByInput,
     genreId
   );
-
-  //we should get the values of our form inputs before we make the post request
 }
-
-//.catch() is going to be the way we can do something if there is an error/show something to the user.
 
 //we really use dataset to kind of put data on top of html elements and be able to access that using our query selector.
 
@@ -77,9 +67,7 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
     .then((response) => response.json())
     .then((song) => {
       const songData = song.data;
-
       let newSong = new Song(songData, songData.attributes);
-
       let songsContainer = document.querySelector("#song-container");
       let songsContainerTitle = document.querySelector("#song-container-title");
       songsContainer.innerHTML =
@@ -107,14 +95,11 @@ genresButton.addEventListener("click", () => {
   } else {
     genresContainer.style.display = "none";
   }
-
   genresButton.innerText = buttonStates[genresButton.innerText];
 });
 
 function handleLikes() {
-  console.log("in handleLikes");
   let likeButtons = document.getElementsByClassName("like-button");
-  console.log(likeButtons);
 
   let likeButtonStates = {
     "Like ": "Unlike ",
@@ -135,7 +120,3 @@ function handleLikes() {
     });
   });
 }
-
-// for (let i = 0; i < nodeItems.length; i++) {
-//   // access current element with nodeItems[i]
-//

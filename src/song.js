@@ -13,7 +13,6 @@ class Song {
   }
 
   renderSongCard() {
-    //don't need the function keyword declaration for our classes.
     return `
               <div data-id=${this.id} class="song-position">
               <h3 id="song-name">Name:  ${this.name} </h3>
@@ -32,10 +31,9 @@ class Song {
 }
 
 Song.all = []; //this array is in the global scope and needs to be in the global scope outside of the song class so it can even know about the song class.
-//our contructor needs to be correct
 //constructor will give us all of our attributes so we can use copies or prototypes of our song object.
 
 //why we want a song class: if we wanted to have an edit button to be able to render an edit form and edit songs we would need to know what song/object we were clicking on. without data ids and without some kind of oojs class that is encapsulating all this data you'd have to find that object and then update it, whereas in oojs I can have an array of javascript instances and use that instead to find this specific instance and update it.
 
-//if we didn't have data-ids on our divs it would be very cumbersome to know which song we clicked for when we clicked a song's edit button. we'd have to find a song one by one.
+//if we didn't have data-ids on our divs it would be very cumbersome to know which song we clicked for when we clicked a song's edit button.
 //to get rid of that issue, we can use object orientation where our objects can store all the data about a particular song in one spot.
