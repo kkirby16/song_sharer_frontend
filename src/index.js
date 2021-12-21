@@ -58,10 +58,9 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
   fetch("http://localhost:3000/api/v1/songs", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(bodyData),
+    body: JSON.stringify(bodyData), //stringifying this json data in order to send it.
     //here we are creating this object that we will send to our database based on attributes our api wants to create a new song
     //this will send back the data to my api.
-    //we are also stringifying this json data in order to send it.
     //the keys in our body data have to be exactly what they are like in the database.
   })
     .then((response) => response.json())
