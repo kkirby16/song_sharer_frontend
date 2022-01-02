@@ -110,7 +110,10 @@ function handleLikes() {
     likeButton.addEventListener("click", () => {
       if (likeButton.id === "unliked") {
         likeButton.id = "liked";
-        console.log("true"); //where I'll call an add like function
+        let songDataId = likeButton.getAttribute("data-id");
+
+        console.log(likeButton.getAttribute("data-id"));
+        addLikeToSong(likeButton, songDataId); //where I'll call an add like function
       } else {
         likeButton.id = "unliked";
         console.log("false"); //where I'll call a remove like function
@@ -118,4 +121,9 @@ function handleLikes() {
       likeButton.innerHTML = likeButtonStates[likeButton.innerHTML];
     });
   });
+
+  function addLikeToSong(likeButton, songDataId) {
+    console.log("likeButton in addLikeToSong function", likeButton);
+    console.log("songDataId in addLikeToSong function", songDataId);
+  }
 }
