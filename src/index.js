@@ -71,6 +71,7 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
       let songsContainerTitle = document.querySelector("#song-container-title");
       songsContainer.innerHTML =
         newSong.renderSongCard() + songsContainer.innerHTML;
+      handleLikes();
     });
 }
 
@@ -123,6 +124,17 @@ function handleLikes() {
   });
 
   function addLikeToSong(likeButton, songDataId) {
+    console.log(Song.all);
+    let likedSong = Song.all.find((song) => song.id === songDataId);
+    let likesForSong = likedSong.likes;
+    console.log(likesForSong);
+    console.log(likedSong);
+    fetch(`http://localhost:3000/api/v1/add_like_to_song/${songDataId}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        likes: (likesForSong += 1),
+      }),
+    });
     console.log("likeButton in addLikeToSong function", likeButton);
     console.log("songDataId in addLikeToSong function", songDataId);
   }
