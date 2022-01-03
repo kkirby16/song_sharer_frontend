@@ -114,28 +114,49 @@ function handleLikes() {
         let songDataId = likeButton.getAttribute("data-id");
 
         console.log(likeButton.getAttribute("data-id"));
+
         addLikeToSong(likeButton, songDataId); //where I'll call an add like function
       } else {
         likeButton.id = "unliked";
-        console.log("false"); //where I'll call a remove like function
+        console.log(likeButton); //where I'll call a remove like function
+        handleLikes();
       }
       likeButton.innerHTML = likeButtonStates[likeButton.innerHTML];
     });
   });
 
-  function addLikeToSong(likeButton, songDataId) {
+  function addLikeToSong(likeButton, song_id) {
+    console.log(song_id);
     console.log(Song.all);
-    let likedSong = Song.all.find((song) => song.id === songDataId);
-    let likesForSong = likedSong.likes;
+    let likedSong = Song.all.find((song) => song.id === song_id);
+    let likesForSong = likedSong.likes.length;
     console.log(likesForSong);
     console.log(likedSong);
-    fetch(`http://localhost:3000/api/v1/add_like_to_song/${songDataId}`, {
-      method: "PATCH",
-      body: JSON.stringify({
-        likes: (likesForSong += 1),
-      }),
-    });
-    console.log("likeButton in addLikeToSong function", likeButton);
-    console.log("songDataId in addLikeToSong function", songDataId);
+    fetch("http://localhost:3000/api/v1/likes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ song_id: song_id }),
+    })
+      .then((response) => console.log("what is this response?", response))
+      .then((like) => {
+        likesForSong += 1;
+        let likedSongOnDom = document.querySelector(`[data-id="${song_id}"]`);
+        console.log("what is this?");
+
+        //make the number of likes for the liked song increase by 1
+        // console.log(
+        //   "liked song selected on dom",
+        //   likedSongOnDom.getElementsByTagName("h4")[5]
+        // );
+
+        console.log(likesForSong);
+
+        likedSongOnDom.getElementsByTagName(
+          "h4"
+        )[5].innerText = `Likes: ${likesForSong}`;
+
+        console.log("likeButton in addLikeToSong function", likeButton);
+        console.log("songDataId in addLikeToSong function", song_id);
+      });
   }
 }
