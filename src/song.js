@@ -1,5 +1,6 @@
 class Song {
   constructor(song, songAttributes) {
+    console.log("what are song attributes?", songAttributes.likes.length);
     this.id = song.id;
     this.name = songAttributes.name; //the attributes can be called off of the songAttributes variable
     this.artist = songAttributes.artist;
@@ -13,6 +14,7 @@ class Song {
   }
 
   renderSongCard() {
+    console.log("what is this.likes?", this.likes.count);
     return `
               <div data-id=${this.id} class="song-position">
               <h3 id="song-name">Name:  ${this.name} </h3>
@@ -21,8 +23,12 @@ class Song {
                 <h4 id="song-info">Song Url:  ${this.song_url}</h4>
                 <h4 id="song-info">Genre:  ${this.genre.name} </h4>
                 <h4 id="song-info">Submitted By:  ${this.submitted_by}</h4>
-                <h4 id="song-info">Likes: ${this.likes}</h4>
-                <button data-id=${this.id} id="unliked" class="like-button">Like </button>
+                <h4 id="song-info">Likes: ${
+                  this.likes == false ? 0 : this.likes.length
+                }</h4>
+                <button data-id=${
+                  this.id
+                } id="unliked" class="like-button">Like </button>
                 <hr class="song-divider">
               </div>
               <br>
@@ -31,6 +37,8 @@ class Song {
 }
 
 Song.all = []; //this array is in the global scope and needs to be in the global scope outside of the song class so it can even know about the song class.
+
+console.log(Song.all);
 //constructor will give us all of our attributes so we can use copies or prototypes of our song object.
 
 //why we want a song class: if we wanted to have an edit button to be able to render an edit form and edit songs we would need to know what song/object we were clicking on. without data ids and without some kind of oojs class that is encapsulating all this data you'd have to find that object and then update it, whereas in oojs I can have an array of javascript instances and use that instead to find this specific instance and update it.
