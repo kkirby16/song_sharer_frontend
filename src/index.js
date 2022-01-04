@@ -107,13 +107,10 @@ function handleLikes() {
   };
 
   [...likeButtons].forEach((likeButton) => {
-    console.log("in the forEach");
     likeButton.addEventListener("click", () => {
       if (likeButton.id === "unliked") {
         likeButton.id = "liked";
         let songDataId = likeButton.getAttribute("data-id");
-
-        console.log(likeButton.getAttribute("data-id"));
 
         addLikeToSong(likeButton, songDataId); //where I'll call an add like function
       } else {
@@ -126,12 +123,8 @@ function handleLikes() {
   });
 
   function addLikeToSong(likeButton, song_id) {
-    console.log(song_id);
-    console.log(Song.all);
     let likedSong = Song.all.find((song) => song.id === song_id);
     let likesForSong = likedSong.likes.length;
-    console.log(likesForSong);
-    console.log(likedSong);
     fetch("http://localhost:3000/api/v1/likes", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -141,22 +134,9 @@ function handleLikes() {
       .then((like) => {
         likesForSong += 1;
         let likedSongOnDom = document.querySelector(`[data-id="${song_id}"]`);
-        console.log("what is this?");
-
-        //make the number of likes for the liked song increase by 1
-        // console.log(
-        //   "liked song selected on dom",
-        //   likedSongOnDom.getElementsByTagName("h4")[5]
-        // );
-
-        console.log(likesForSong);
-
         likedSongOnDom.getElementsByTagName(
           "h4"
         )[5].innerText = `Likes: ${likesForSong}`;
-
-        console.log("likeButton in addLikeToSong function", likeButton);
-        console.log("songDataId in addLikeToSong function", song_id);
       });
   }
 }
