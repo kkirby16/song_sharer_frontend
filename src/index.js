@@ -115,7 +115,9 @@ function handleLikes() {
         addLikeToSong(likeButton, songDataId); //where I'll call an add like function
       } else {
         likeButton.id = "unliked";
-        console.log(likeButton); //where I'll call a remove like function
+        let songDataId = likeButton.getAttribute("data-id");
+        console.log("what is the disliked liked button?", likeButton);
+        removeLikeFromSong(likeButton, songDataId); //where I'll call a remove like function
         handleLikes();
       }
       likeButton.innerHTML = likeButtonStates[likeButton.innerHTML];
@@ -138,5 +140,14 @@ function handleLikes() {
           "h4"
         )[5].innerText = `Likes: ${likesForSong}`;
       });
+  }
+
+  function removeLikeFromSong(likeButton, song_id) {
+    let unlikedSong = Song.all.find((song) => song.id === song_id);
+    let likesForSong = unlikedSong.likes.length;
+    fetch(`http://localhost:3000/api/v1/likes/${song_id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    }).then((response) => console.log(response));
   }
 }
