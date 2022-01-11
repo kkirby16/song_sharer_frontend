@@ -110,44 +110,62 @@ function handleLikes() {
     likeButton.addEventListener("click", () => {
       if (likeButton.id === "unliked") {
         likeButton.id = "liked";
+        likeButton.innerHTML = "Unlike ";
         let songDataId = likeButton.getAttribute("data-id");
 
         addLikeToSong(likeButton, songDataId); //where I'll call an add like function
-      } else {
+      } else if (likeButton.id === "liked") {
         likeButton.id = "unliked";
+        likeButton.innerHTML = "Like ";
+
         let songDataId = likeButton.getAttribute("data-id");
         console.log("what is the disliked liked button?", likeButton);
         removeLikeFromSong(likeButton, songDataId); //where I'll call a remove like function
-        handleLikes();
       }
-      likeButton.innerHTML = likeButtonStates[likeButton.innerHTML];
     });
   });
+}
 
-  function addLikeToSong(likeButton, song_id) {
-    let likedSong = Song.all.find((song) => song.id === song_id);
-    let likesForSong = likedSong.likes.length;
-    fetch("http://localhost:3000/api/v1/likes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ song_id: song_id }),
-    })
-      .then((response) => console.log("what is this response?", response))
-      .then((like) => {
-        likesForSong += 1;
-        let likedSongOnDom = document.querySelector(`[data-id="${song_id}"]`);
-        likedSongOnDom.getElementsByTagName(
-          "h4"
-        )[5].innerText = `Likes: ${likesForSong}`;
-      });
-  }
+function addLikeToSong(likeButton, song_id) {
+  let likedSong = Song.all.find((song) => song.id === song_id);
+  let likesForSong = likedSong.likes.length;
+  fetch("http://localhost:3000/api/v1/likes", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ song_id: song_id }),
+  })
+    .then((response) => console.log("what is this response?", response))
+    .then((like) => {
+      likesForSong += 1;
+      let likedSongOnDom = document.querySelector(`[data-id="${song_id}"]`);
+      likedSongOnDom.getElementsByTagName(
+        "h4"
+      )[5].innerText = `Likes: ${likesForSong}`;
+    });
+}
 
-  function removeLikeFromSong(likeButton, song_id) {
-    let unlikedSong = Song.all.find((song) => song.id === song_id);
-    let likesForSong = unlikedSong.likes.length;
-    fetch(`http://localhost:3000/api/v1/likes/${song_id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    }).then((response) => console.log(response));
-  }
+function removeLikeFromSong(likeButton, song_id) {
+  let unlikedSong = Song.all.find((song) => song.id === song_id);
+  console.log(
+    "what is unliked song?",
+    unlikedSong.likes[unlikedSong.likes.length - 1]
+  );
+  let likesForSong = unlikedSong.likes.length;
+  console.log("new - what is unliked song's likes?", unlikedSong.likes);
+  let like_id = unlikedSong.likes[unlikedSong.likes.length - 1].id;
+  console.log("what is likes for song", likesForSong.likes);
+  fetch(`http://localhost:3000/api/v1/likes/${like_id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((response) =>
+      console.log("what is response when clicking unlike?", response)
+    )
+    .then((unlikedLike) => {
+      console.log("what is this new console log?", unlikedLike);
+      let unlikedSongOnDom = document.querySelector(`[data-id="${song_id}"]`);
+      unlikedSongOnDom.getElementsByTagName(
+        "h4"
+      )[5].innerText = `Likes: ${likesForSong}`;
+    });
 }
