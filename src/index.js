@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const createSongForm = document.getElementById("create-song-form");
 
   createSongForm.addEventListener("submit", (e) => createFormHandler(e)); //when add an event listener, first step should be to console log to confirm that the event was hooked up properly
+  handleLikes();
 }); //after this form is submitted it is calling a form handler.
 
 function getSongs() {
@@ -113,14 +114,14 @@ function handleLikes() {
         likeButton.innerHTML = "Unlike ";
         let songDataId = likeButton.getAttribute("data-id");
 
-        addLikeToSong(likeButton, songDataId); //where I'll call an add like function
+        addLikeToSong(likeButton, songDataId);
       } else if (likeButton.id === "liked") {
         likeButton.id = "unliked";
         likeButton.innerHTML = "Like ";
 
         let songDataId = likeButton.getAttribute("data-id");
         console.log("what is the disliked liked button?", likeButton);
-        removeLikeFromSong(likeButton, songDataId); //where I'll call a remove like function
+        removeLikeFromSong(likeButton, songDataId);
       }
     });
   });
@@ -146,14 +147,15 @@ function addLikeToSong(likeButton, song_id) {
 
 function removeLikeFromSong(likeButton, song_id) {
   let unlikedSong = Song.all.find((song) => song.id === song_id);
-  console.log(
-    "what is unliked song?",
-    unlikedSong.likes[unlikedSong.likes.length - 1]
-  );
+  console.log("what am I getting?", unlikedSong.likes);
   let likesForSong = unlikedSong.likes.length;
   console.log("new - what is unliked song's likes?", unlikedSong.likes);
   let like_id = unlikedSong.likes[unlikedSong.likes.length - 1].id;
   console.log("what is likes for song", likesForSong.likes);
+  removeLikeFetch(like_id, song_id, likesForSong);
+}
+
+function removeLikeFetch(like_id, song_id, likesForSong) {
   fetch(`http://localhost:3000/api/v1/likes/${like_id}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
