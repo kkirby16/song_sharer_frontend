@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 }); //after this form is submitted it is calling a form handler.
 
 function getSongs() {
-  return fetch("http://localhost:3000/api/v1/songs")
+  return fetch("https://infinite-shore-27478.herokuapp.com/api/v1/songs")
     .then((response) => response.json()) //fetch returns a promise and in that promise there is a response that we can take out and then parse to json.
     .then((songs) => {
       songs.data.forEach((song) => {
@@ -23,7 +23,7 @@ function getSongs() {
 
 function getGenres() {
   genresContainer.innerHTML = "";
-  fetch("http://localhost:3000/api/v1/genres")
+  fetch("https://infinite-shore-27478.herokuapp.com/api/v1/genres")
     .then((response) => response.json()) //fetch returns a promise and in that promise there is a response that we can take out and then parse to json.
     .then((genres) => {
       genres.data.forEach((genre) => {
@@ -56,7 +56,7 @@ function createFormHandler(e) {
 
 function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
   const bodyData = { name, artist, album, song_url, submitted_by, genre_id }; //building body object outside of the fetch.
-  fetch("http://localhost:3000/api/v1/songs", {
+  fetch("https://infinite-shore-27478.herokuapp.com/api/v1/songs", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(bodyData), //stringifying this json data in order to send it.
@@ -130,7 +130,7 @@ function handleLikes() {
 function addLikeToSong(likeButton, song_id) {
   let likedSong = Song.all.find((song) => song.id === song_id);
   let likesForSong = likedSong.likes.length;
-  fetch("http://localhost:3000/api/v1/likes", {
+  fetch("https://infinite-shore-27478.herokuapp.com/api/v1/likes", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ song_id: song_id }),
@@ -156,7 +156,7 @@ function removeLikeFromSong(likeButton, song_id) {
 }
 
 function removeLikeFetch(like_id, song_id, likesForSong) {
-  fetch(`http://localhost:3000/api/v1/likes/${like_id}`, {
+  fetch(`https://infinite-shore-27478.herokuapp.com/api/v1/likes/${like_id}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
   })
