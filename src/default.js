@@ -1,6 +1,6 @@
 import { gsap } from "gsap";
 
-gsap.to("site-title-1", {
+gsap.to("site-title1", {
   duration: 0.9,
   opacity: 1,
   y: -20,
