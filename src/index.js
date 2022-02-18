@@ -58,13 +58,17 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
   const bodyData = { name, artist, album, song_url, submitted_by, genre_id }; //building body object outside of the fetch.
   fetch("https://infinite-shore-27478.herokuapp.com/api/v1/songs", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "https://song-sharer.netlify.app/",
+    },
     body: JSON.stringify(bodyData), //stringifying this json data in order to send it.
     //here we are creating this object that we will send to our database based on attributes our api wants to create a new song
     //this will send back the data to my api.
     //the keys in our body data have to be exactly what they are like in the database.
   })
-    .then((response) => console.log("what is this", response))
+    .then((response) => response.json())
     .then((song) => {
       const songData = song.data;
       let newSong = new Song(songData, songData.attributes);
