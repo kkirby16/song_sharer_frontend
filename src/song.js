@@ -23,12 +23,8 @@ class Song {
                 <h4 id="song-info">Song Url:  ${this.song_url}</h4>
                 <h4 id="song-info">Genre:  ${this.genre.name} </h4>
                 <h4 id="song-info">Submitted By:  ${this.submitted_by}</h4>
-                <h4 id="song-info" className="song-likes">Likes: ${
-                  this.likes == false ? 0 : this.likes.length
-                }</h4>
-                <button data-id=${
-                  this.id
-                } id="unliked" class="like-button">Like </button>
+                <h4 id="song-info" className="song-likes">Likes: ${this.likes.length}</h4>
+                <button data-id=${this.id} id="unliked" class="like-button">Like </button>
                 <hr class="song-divider">
               </div>
               <br>
