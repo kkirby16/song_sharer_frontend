@@ -1,4 +1,4 @@
-import { gsap } from "gsap";
+// import { gsap } from "gsap";
 
 const siteTitle1 = document.querySelector("site-title1");
 
