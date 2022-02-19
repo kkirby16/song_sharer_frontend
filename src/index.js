@@ -58,8 +58,9 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
   const bodyData = { name, artist, album, song_url, submitted_by, genre_id }; //building body object outside of the fetch.
   fetch("https://infinite-shore-27478.herokuapp.com/api/v1/songs", {
     method: "POST",
-    mode: "cors",
+    mode: "no-cors",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
       "Access-Control-Allow-Credentials": true,
       "Access-Control-Allow-Origin": "https://song-sharer.netlify.app/",
