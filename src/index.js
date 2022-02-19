@@ -61,6 +61,7 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
+      "Access-Control-Allow-Credentials": true,
       "Access-Control-Allow-Origin": "https://song-sharer.netlify.app/",
     },
     body: JSON.stringify(bodyData), //stringifying this json data in order to send it.
