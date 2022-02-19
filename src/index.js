@@ -63,7 +63,7 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
       Accept: "application/json",
       "Content-Type": "application/json",
       "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Origin": "https://song-sharer.netlify.app/",
+      "Access-Control-Allow-Origin": "*",
     },
     body: JSON.stringify(bodyData), //stringifying this json data in order to send it.
     //here we are creating this object that we will send to our database based on attributes our api wants to create a new song
