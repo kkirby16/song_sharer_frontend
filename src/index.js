@@ -70,7 +70,7 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
     //this will send back the data to my api.
     //the keys in our body data have to be exactly what they are like in the database.
   })
-    .then((response) => console.log("what is the response", response))
+    .then((response) => response.json())
     .then((song) => {
       console.log("what is song?", song);
       let newSong = new Song(song, song.attributes);
