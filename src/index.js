@@ -73,7 +73,7 @@ function postFetch(name, artist, album, song_url, submitted_by, genre_id) {
     .then((response) => response.json())
     .then((song) => {
       console.log("what is song?", song);
-      let newSong = new Song(song, song.attributes);
+      let newSong = new Song(song, song.data.attributes);
       let songsContainer = document.querySelector("#song-container");
       let songsContainerTitle = document.querySelector("#song-container-title");
       songsContainer.innerHTML =
